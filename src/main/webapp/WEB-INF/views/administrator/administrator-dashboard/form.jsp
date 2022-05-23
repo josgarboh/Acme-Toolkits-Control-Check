@@ -4,6 +4,86 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
+<!-- Individual: Showing chimpums data -->
+
+<h1><acme:message code="administrator.administrator-dashboard.form.title.chimpum"/></h1>
+
+<table class="table table-sm">
+<caption><acme:message code="administrator.administrator-dashboard.form.title.chimpum"/></caption>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.administrator-dashboard.form.title.ratio-chimpums-artifacts"/>
+		</th>
+		<td>
+			<jstl:set var="value" value="${ratioOfArtifactsWithChimpum}"/>
+			<acme:print value="${value}"/>
+		</td>
+	</tr>
+</table>
+
+<h2><acme:message code="administrator.administrator-dashboard.form.title.average"/></h2>
+<table class="table table-sm">
+<caption><acme:message code="administrator.administrator-dashboard.form.title.average"/></caption>
+	<jstl:forEach items="${acceptedCurrencies}" var="currency">
+		<tr>
+			<th scope="row">
+				<acme:print value="${currency}"/>
+			</th>
+			<td>
+				<jstl:set var="value" value="${averageBudgetOfChimpumsGroupedByCurrency.getOrDefault(currency,0.0)}"/>
+				<acme:print value="${value}"/>
+			</td>
+		</tr>
+	</jstl:forEach>
+</table>
+
+<h2><acme:message code="administrator.administrator-dashboard.form.title.deviation"/></h2>
+<table class="table table-sm">
+<caption><acme:message code="administrator.administrator-dashboard.form.title.deviation"/></caption>
+	<jstl:forEach items="${acceptedCurrencies}" var="currency">
+		<tr>
+			<th scope="row">
+				<acme:print value="${currency}"/>
+			</th>
+			<td>
+				<jstl:set var="value" value="${deviationBudgetOfChimpumsGroupedByCurrency.getOrDefault(currency,0.0)}"/>
+				<acme:print value="${value}"/>
+			</td>
+		</tr>
+	</jstl:forEach>
+</table>
+
+<h2><acme:message code="administrator.administrator-dashboard.form.title.minimum"/></h2>
+<table class="table table-sm">
+<caption><acme:message code="administrator.administrator-dashboard.form.title.minimum"/></caption>
+	<jstl:forEach items="${acceptedCurrencies}" var="currency">
+		<tr>
+			<th scope="row">
+				<acme:print value="${currency}"/>
+			</th>
+			<td>
+				<jstl:set var="value" value="${minimumBudgetOfChimpumsGroupedByCurrency.getOrDefault(currency,0.0)}"/>
+				<acme:print value="${value}"/>
+			</td>
+		</tr>
+	</jstl:forEach>
+</table>
+
+<h2><acme:message code="administrator.administrator-dashboard.form.title.maximum"/></h2>
+<table class="table table-sm">
+<caption><acme:message code="administrator.administrator-dashboard.form.title.maximum"/></caption>
+	<jstl:forEach items="${acceptedCurrencies}" var="currency">
+		<tr>
+			<th scope="row">
+				<acme:print value="${currency}"/>
+			</th>
+			<td>
+				<jstl:set var="value" value="${maximumBudgetOfChimpumsGroupedByCurrency.getOrDefault(currency,0.0)}"/>
+				<acme:print value="${value}"/>
+			</td>
+		</tr>
+	</jstl:forEach>
+</table>
 
 <!-- Showing components data -->
 

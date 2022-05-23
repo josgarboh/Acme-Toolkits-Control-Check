@@ -49,6 +49,7 @@ public class Chimpum extends AbstractEntity {
 	
 	//Period
 	
+	//Un mes despues de la creación y una semana de largo (minimo)
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	protected Date				startDate;
@@ -57,7 +58,7 @@ public class Chimpum extends AbstractEntity {
 	@NotNull
 	protected Date				finishDate;
 	
-	//Valid -> validator de money (>0)
+	//Valid -> (>0)
 	@NotNull
 	@Valid
 	protected Money 			budget;
