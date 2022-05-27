@@ -10,3 +10,5 @@ inventor.chimpum.form.label.start-date = Start date
 inventor.chimpum.form.label.finish-date = Finish date
 inventor.chimpum.form.label.budget = Budget
 inventor.chimpum.form.label.link = Link with info
+
+inventor.chimpum.form.button.artifact =  Associated artifacts

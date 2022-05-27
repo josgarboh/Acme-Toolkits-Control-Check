@@ -31,7 +31,7 @@ public class Chimpum extends AbstractEntity {
 	//Attributes -----------------------------------
 	
 	@Column(unique = true)
-	//Falta pattern
+	//Falta @Pattern
 	protected String 			code;
 	
 	@Temporal(TemporalType.TIMESTAMP)

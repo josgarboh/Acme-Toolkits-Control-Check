@@ -13,3 +13,5 @@
 	<acme:input-money code="inventor.chimpum.form.label.budget" path="budget"/>
 	<acme:input-textbox code="inventor.chimpum.form.label.link" path="link"/>
 </acme:form>
+
+<acme:button code="inventor.chimpum.form.button.artifact" action="/inventor/artifact/list-chimpum?chimpumId=${chimpumId}"/>
