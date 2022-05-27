@@ -8,3 +8,5 @@
 	<acme:list-column code="inventor.chimpum.form.label.creation-moment" path="creationMoment"/>
 	<acme:list-column code="inventor.chimpum.form.label.title" path="title"/>
 </acme:list>
+
+<acme:button code="inventor.chimpum.list.button.create" action="/inventor/chimpum/create"/>

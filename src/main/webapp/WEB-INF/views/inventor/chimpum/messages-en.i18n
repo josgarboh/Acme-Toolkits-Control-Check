@@ -2,6 +2,8 @@ inventor.chimpum.list.label.code = Code
 inventor.chimpum.list.label.creation-moment = Creation moment
 inventor.chimpum.list.label.title = Title
 
+inventor.chimpum.list.button.create = Create a Chimpum
+
 inventor.chimpum.form.label.code = Code
 inventor.chimpum.form.label.creation-moment = Creation moment
 inventor.chimpum.form.label.title = Title
@@ -12,3 +14,6 @@ inventor.chimpum.form.label.budget = Budget
 inventor.chimpum.form.label.link = Link with info
 
 inventor.chimpum.form.button.artifact =  Associated artifacts
+inventor.chimpum.form.button.create = Create
+
+inventor.chimpum.form.error.spam-detector = Text cannot have spam. Rewrite it properly, please.

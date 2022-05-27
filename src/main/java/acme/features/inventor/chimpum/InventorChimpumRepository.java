@@ -16,4 +16,18 @@ public interface InventorChimpumRepository extends AbstractRepository{
 
 	@Query("select c from Chimpum c where c.id = :id")
 	Chimpum findChimpumById(int id);
+	
+	//Para validate
+	
+	@Query("select config.strongSpamTerms from ConfigData config")
+	String findStrongSpamTerms();
+	
+	@Query("select config.weakSpamTerms from ConfigData config")
+	String findWeakSpamTerms();
+	
+	@Query("select config.strongSpamTreshold from ConfigData config")
+	int findStrongSpamTreshold();
+	
+	@Query("select config.weakSpamTreshold from ConfigData config")
+	int findWeakSpamTreshold();
 }
