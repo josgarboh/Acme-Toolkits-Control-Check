@@ -54,6 +54,8 @@ public interface InventorArtifactRepository extends AbstractRepository{
 	
 	//Individual ---------------------------
 	
-	@Query("select a from Artifact a where a.chimpum.id = :id")
-	Collection<Artifact> findArtifactsByChimpumId(int id);
+	//Solo se muestran los publicados
+	
+	@Query("select a from Artifact a where a.chimpum.id = :id and a.published = true")
+	Collection<Artifact> findPublishedArtifactsByChimpumId(int id);
 }

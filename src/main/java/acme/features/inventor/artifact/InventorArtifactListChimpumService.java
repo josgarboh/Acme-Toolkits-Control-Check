@@ -35,10 +35,10 @@ public class InventorArtifactListChimpumService implements AbstractListService<I
 		assert request != null;
 		
 		int chimpumId;
-		chimpumId = request.getModel().getInteger("chimpumId");	//id sería de artifact, no de chimpum
+		chimpumId = request.getModel().getInteger("chimpumId");	//"id" sería de artifact, no de chimpum
 		
 		Collection<Artifact> result;
-		result = this.repository.findArtifactsByChimpumId(chimpumId);
+		result = this.repository.findPublishedArtifactsByChimpumId(chimpumId);
 		
 		return result;
 		

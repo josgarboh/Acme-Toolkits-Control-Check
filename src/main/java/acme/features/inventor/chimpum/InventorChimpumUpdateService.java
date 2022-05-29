@@ -1,7 +1,6 @@
 package acme.features.inventor.chimpum;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +10,15 @@ import acme.entities.chimpum.Chimpum;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
-import acme.framework.services.AbstractCreateService;
+import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
 import features.SpamDetector;
 
 @Service
-public class InventorChimpumCreateService  implements AbstractCreateService<Inventor,Chimpum>{	
-
-	//Individual
+public class InventorChimpumUpdateService implements AbstractUpdateService<Inventor, Chimpum>{
 	
+	//Individual
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -58,13 +57,14 @@ public class InventorChimpumCreateService  implements AbstractCreateService<Inve
 	}
 
 	@Override
-	public Chimpum instantiate(final Request<Chimpum> request) {
+	public Chimpum findOne(final Request<Chimpum> request) {
 		assert request != null;
-
-		Chimpum result;
-		result = new Chimpum();
+	
+		int chimpumId;
+		chimpumId = request.getModel().getInteger("id");
 		
-		result.setCreationMoment(new Date());
+		Chimpum result;	
+		result = this.repository.findChimpumById(chimpumId);
 
 		return result;
 	}
@@ -175,14 +175,12 @@ public class InventorChimpumCreateService  implements AbstractCreateService<Inve
 	}
 
 	@Override
-	public void create(final Request<Chimpum> request, final Chimpum entity) {
+	public void update(final Request<Chimpum> request, final Chimpum entity) {
 		assert request != null;
 		assert entity != null;
 
 		this.repository.save(entity);
 
 	}
-
-
 
 }
