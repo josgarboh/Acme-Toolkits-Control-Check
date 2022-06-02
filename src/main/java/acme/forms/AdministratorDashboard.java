@@ -53,7 +53,15 @@ public class AdministratorDashboard {
 	Map<Status,Double>						minimumBudgetOfPatronagesGroupedByStatus;
 	Map<Status,Double>						maximumBudgetOfPatronagesGroupedByStatus;
 	
-
+	//Individual
+	
+	int										ratioOfArtifactsWithChimpum;
+	
+	Map<String,Double>						averageBudgetOfChimpumsGroupedByCurrency;
+	Map<String,Double>						deviationBudgetOfChimpumsGroupedByCurrency;
+	Map<String,Double>						minimumBudgetOfChimpumsGroupedByCurrency;
+	Map<String,Double>						maximumBudgetOfChimpumsGroupedByCurrency;						
+	
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------

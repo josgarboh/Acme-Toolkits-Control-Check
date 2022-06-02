@@ -1,0 +1,25 @@
+inventor.chimpum.list.label.code = Code
+inventor.chimpum.list.label.creation-moment = Creation moment
+inventor.chimpum.list.label.title = Title
+
+inventor.chimpum.list.button.create = Create a Chimpum
+
+inventor.chimpum.form.label.code = Code
+inventor.chimpum.form.label.creation-moment = Creation moment
+inventor.chimpum.form.label.title = Title
+inventor.chimpum.form.label.description = Description
+inventor.chimpum.form.label.start-date = Start date
+inventor.chimpum.form.label.finish-date = Finish date
+inventor.chimpum.form.label.budget = Budget
+inventor.chimpum.form.label.link = Link with info
+
+inventor.chimpum.form.button.artifact =  Associated artifacts
+inventor.chimpum.form.button.create = Create
+inventor.chimpum.form.button.update = Update
+inventor.chimpum.form.button.delete = Delete
+
+inventor.chimpum.form.error.spam-detector = Text cannot have spam. Rewrite it properly, please.
+inventor.chimpum.form.error.negative-budget = The amount must be positive
+inventor.chimpum.form.error.negative-currency = The currency is incorrect
+inventor.chimpum.form.error.start-date = The start date must be one month (or longer) after the chimpum is created
+inventor.chimpum.form.error.finish-date = The finish date must be one week (or longer) after the start date value
