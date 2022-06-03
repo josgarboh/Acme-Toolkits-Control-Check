@@ -1,0 +1,26 @@
+inventor.plaba.list.label.code = Código
+inventor.plaba.list.label.creation-moment = Fecha de creación
+inventor.plaba.list.label.title = Título
+
+inventor.plaba.list.button.create = Crear un plaba
+
+inventor.plaba.form.label.code = Código
+inventor.plaba.form.label.creation-moment = Fecha de creación
+inventor.plaba.form.label.subject = Asignatura
+inventor.plaba.form.label.summary = Resumen
+inventor.plaba.form.label.start-date = Fecha de comienzo
+inventor.plaba.form.label.finish-date = Fecha de conclusión
+inventor.plaba.form.label.income = Presupuesto
+inventor.plaba.form.label.link = Enlace con más información
+
+inventor.plaba.form.button.artifact = Artefactos asociados
+inventor.plaba.form.button.create = Crear
+inventor.plaba.form.button.update = Actualizar
+inventor.plaba.form.button.delete = Borrar
+
+inventor.plaba.form.error.duplicated-code = Código duplicado
+inventor.plaba.form.error.spam-detector = El texto no puede contener spam. Reescríbalo adecuadamente, por favor.
+inventor.plaba.form.error.negative-income = La cantidad introducida debe ser positiva
+inventor.plaba.form.error.negative-currency = La moneda no es correcta
+inventor.plaba.form.error.start-date = La fecha de comienzo debe ser, como mínimo, un mes después de la fecha de creación
+inventor.plaba.form.error.finish-date = La fecha de conclusión debe ser, como mínimo, una semana después de la fecha de comienzo

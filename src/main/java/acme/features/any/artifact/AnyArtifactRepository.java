@@ -29,6 +29,6 @@ public interface AnyArtifactRepository extends AbstractRepository {
 
 	//Chimpum
 	
-	@Query("select a from Artifact a where a.chimpum.id = :id and a.published = true")
-	Collection<Artifact> findArtifactsByChimpumId(int id);
+	@Query("select a from Artifact a where a.plaba.id = :id and a.published = true")
+	Collection<Artifact> findArtifactsByPlabaId(int id);
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.entities.artifacts.Artifact;
 import acme.entities.artifacts.Quantity;
-import acme.entities.chimpum.Chimpum;
+import acme.entities.plaba.Plaba;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Inventor;
 
@@ -58,12 +58,12 @@ public interface InventorArtifactRepository extends AbstractRepository{
 	
 	//Solo se muestran los publicados
 	
-	@Query("select a from Artifact a where a.chimpum.id = :id and a.published = true")
-	Collection<Artifact> findPublishedArtifactsByChimpumId(int id);
+	@Query("select a from Artifact a where a.plaba.id = :id and a.published = true")
+	Collection<Artifact> findPublishedArtifactsByPlabaId(int id);
 	
-	@Query("select c from Chimpum c")
-	List<Chimpum> findAllChimpums();
+	@Query("select p from Plaba p")
+	List<Plaba> findAllPlabas();
 
-	@Query("select c from Chimpum c where c.id = :id")
-	Chimpum findChimpumById(int id);
+	@Query("select p from Plaba p where p.id = :id")
+	Plaba findPlabaById(int id);
 }

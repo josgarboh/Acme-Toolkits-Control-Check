@@ -1,4 +1,4 @@
-package acme.features.inventor.chimpum;
+package acme.features.inventor.plaba;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.chimpum.Chimpum;
+import acme.entities.plaba.Plaba;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -17,53 +17,53 @@ import acme.roles.Inventor;
 import features.SpamDetector;
 
 @Service
-public class InventorChimpumCreateService  implements AbstractCreateService<Inventor,Chimpum>{	
+public class InventorPlabaCreateService  implements AbstractCreateService<Inventor,Plaba>{	
 
 	//Individual
 	
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected InventorChimpumRepository repository;
+	protected InventorPlabaRepository repository;
 
-	// AbstractListService<Inventor, Chimpum> interface ---------------------------
+	// AbstractListService<Inventor, Plaba> interface ---------------------------
 
 	@Override
-	public boolean authorise(final Request<Chimpum> request) {
+	public boolean authorise(final Request<Plaba> request) {
 		assert request != null;
 
 		return true;
 	}
 
 	@Override
-	public void bind(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void bind(final Request<Plaba> request, final Plaba entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "code", "title", "description", "creationMoment", "startDate",
-										"finishDate","budget", "link");
+		request.bind(entity, errors, "code", "subject", "summary", "creationMoment", "startDate",
+										"finishDate","income", "moreInfo");
 
 	}
 
 	@Override
-	public void unbind(final Request<Chimpum> request, final Chimpum entity, final Model model) {
+	public void unbind(final Request<Plaba> request, final Plaba entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model,"code", "title", "description", "creationMoment", "startDate",
-										"finishDate","budget", "link");
+		request.unbind(entity, model,"code", "subject", "summary", "creationMoment", "startDate",
+										"finishDate","income", "moreInfo");
 
 
 	}
 
 	@Override
-	public Chimpum instantiate(final Request<Chimpum> request) {
+	public Plaba instantiate(final Request<Plaba> request) {
 		assert request != null;
 
-		Chimpum result;
-		result = new Chimpum();
+		Plaba result;
+		result = new Plaba();
 		
 		result.setCreationMoment(new Date());
 
@@ -71,7 +71,7 @@ public class InventorChimpumCreateService  implements AbstractCreateService<Inve
 	}
 
 	@Override
-	public void validate(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void validate(final Request<Plaba> request, final Plaba entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -95,46 +95,46 @@ public class InventorChimpumCreateService  implements AbstractCreateService<Inve
 		
 		//En caso de que el code y el creationMoment estén duplicados:
 		if (!errors.hasErrors("code")) {
-			List<Chimpum> chimpumsWithSameCode;
-			int numberOfChimpumWithCode;
+			List<Plaba> PlabasWithSameCode;
+			int numberOfPlabaWithCode;
 
-			chimpumsWithSameCode = this.repository.findChimpumsWithSameCode(entity.getCode());
+			PlabasWithSameCode = this.repository.findPlabasWithSameCode(entity.getCode());
 
-			numberOfChimpumWithCode = 0;
-			for(final Chimpum chimpum: chimpumsWithSameCode) {	//Solo comparamos fecha (hora no): no usamos sql
-				if(chimpum.getPattern().equals(entity.getPattern()))
-					numberOfChimpumWithCode+= 1;
+			numberOfPlabaWithCode = 0;
+			for(final Plaba Plaba: PlabasWithSameCode) {	//Solo comparamos fecha (hora no): no usamos sql
+				if(Plaba.getPattern().equals(entity.getPattern()))
+					numberOfPlabaWithCode+= 1;
 			}
 
-			errors.state(request, numberOfChimpumWithCode == 0, "code", "inventor.chimpum.form.error.duplicated-code");
+			errors.state(request, numberOfPlabaWithCode == 0, "code", "inventor.plaba.form.error.duplicated-code");
 		}
 		
-		if(!errors.hasErrors("title")) {
+		if(!errors.hasErrors("subject")) {
 			
-			//Comprobacion de que el titulo contiene palabras malsonantes (suaves o duras)
+			//Comprobacion de que el subject contiene palabras malsonantes (suaves o duras)
 			
 			final Boolean condition = !spamDetector.containsSpam(weakSpamTerms.split(","),
 														weakSpamThreshold,
-														entity.getTitle())
+														entity.getSubject())
 								&& !spamDetector.containsSpam(strongSpamTerms.split(","),
 														strongSpamThreshold,
-														entity.getTitle());
+														entity.getSubject());
 			
-			errors.state(request, condition, "title", "inventor.chimpum.form.error.spam-detector");
+			errors.state(request, condition, "subjects", "inventor.plaba.form.error.spam-detector");
 		}
 
-		if(!errors.hasErrors("description")) {
+		if(!errors.hasErrors("summary")) {
 			
-			//Comprobacion de que la descripcion contiene palabras malsonantes (suaves o duras)
+			//Comprobacion de que el summary contiene palabras malsonantes (suaves o duras)
 			
 			final Boolean condition = !spamDetector.containsSpam(weakSpamTerms.split(","),
 														weakSpamThreshold,
-														entity.getDescription())
+														entity.getSummary())
 								&& !spamDetector.containsSpam(strongSpamTerms.split(","),
 														strongSpamThreshold,
-														entity.getDescription());
+														entity.getSummary());
 			
-			errors.state(request, condition, "description", "inventor.chimpum.form.error.spam-detector");
+			errors.state(request, condition, "summary", "inventor.plaba.form.error.spam-detector");
 		}
 		
 		if(!errors.hasErrors("startDate")) {
@@ -147,7 +147,7 @@ public class InventorChimpumCreateService  implements AbstractCreateService<Inve
 			
 			final Boolean condition = entity.getStartDate().after(calendar.getTime());
 
-			errors.state(request, condition, "startDate", "inventor.chimpum.form.error.start-date");	
+			errors.state(request, condition, "startDate", "inventor.plaba.form.error.start-date");	
 		}
 		
 		if(!errors.hasErrors("finishDate")) {
@@ -165,12 +165,12 @@ public class InventorChimpumCreateService  implements AbstractCreateService<Inve
 				errorState = entity.getFinishDate().after(calendar.getTime());	//startDate debe ser previo (1 semana minimo)
 			}
 
-			errors.state(request, errorState, "finishDate", "inventor.chimpum.form.error.finish-date");	
+			errors.state(request, errorState, "finishDate", "inventor.plaba.form.error.finish-date");	
 		}
 		
-		if(!errors.hasErrors("budget")) {
+		if(!errors.hasErrors("income")) {
 			
-			final String currency = entity.getBudget().getCurrency();
+			final String currency = entity.getIncome().getCurrency();
 			final String currencyAvaliable = this.repository.acceptedCurrencies();
 			
 			boolean acceptedCurrency = false;
@@ -181,10 +181,10 @@ public class InventorChimpumCreateService  implements AbstractCreateService<Inve
 				if(acceptedCurrency) break;
 			}
 			
-			final Boolean valorPositivo = entity.getBudget().getAmount() > 0;
+			final Boolean valorPositivo = entity.getIncome().getAmount() > 0;
 			
-			errors.state(request, valorPositivo, "budget", "inventor.chimpum.form.error.negative-budget");
-			errors.state(request, acceptedCurrency, "budget", "inventor.chimpum.form.error.negative-currency");
+			errors.state(request, valorPositivo, "income", "inventor.plaba.form.error.negative-income");
+			errors.state(request, acceptedCurrency, "income", "inventor.plaba.form.error.negative-currency");
 		}
 		
 		
@@ -193,7 +193,7 @@ public class InventorChimpumCreateService  implements AbstractCreateService<Inve
 	}
 
 	@Override
-	public void create(final Request<Chimpum> request, final Chimpum entity) {
+	public void create(final Request<Plaba> request, final Plaba entity) {
 		assert request != null;
 		assert entity != null;
 

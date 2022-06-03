@@ -71,19 +71,19 @@ public interface AdministratorAdministratorDashboardRepository extends AbstractR
 	
 	//Individual -----------------------------------
 	
-	@Query("select count(a) from Artifact a where a.chimpum != null and a.artifactType = 0")
-	int countArtifactToolsWithChimpum();
+	@Query("select count(a) from Artifact a where a.plaba != null and a.artifactType = 0")
+	int countToolsWithPlaba();
 	
-	@Query("select c.budget.currency, avg(c.budget.amount) from Chimpum c group by c.budget.currency")
-	List<String> averageBudgetOfChimpumsGroupedByCurrency();
+	@Query("select p.income.currency, avg(p.income.amount) from Plaba p group by p.income.currency")
+	List<String> averageIncomeOfPlabasGroupedByCurrency();
 	
-	@Query("select c.budget.currency, stddev(c.budget.amount) from Chimpum c group by c.budget.currency")
-	List<String> deviationBudgetOfChimpumsGroupedByCurrency();
+	@Query("select p.income.currency, stddev(p.income.amount) from Plaba p group by p.income.currency")
+	List<String> deviationIncomeOfPlabasGroupedByCurrency();
 	
-	@Query("select c.budget.currency, min(c.budget.amount) from Chimpum c group by c.budget.currency")
-	List<String> minimumBudgetOfChimpumsGroupedByCurrency();
+	@Query("select p.income.currency, min(p.income.amount) from Plaba p group by p.income.currency")
+	List<String> minimumIncomeOfPlabasGroupedByCurrency();
 	
-	@Query("select c.budget.currency, max(c.budget.amount) from Chimpum c group by c.budget.currency")
-	List<String> maximumBudgetOfChimpumsGroupedByCurrency();	
+	@Query("select p.income.currency, max(p.income.amount) from Plaba p group by p.income.currency")
+	List<String> maximumIncomeOfPlabasGroupedByCurrency();	
 
 }

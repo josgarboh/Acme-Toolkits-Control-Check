@@ -1,33 +1,33 @@
-package acme.features.inventor.chimpum;
+package acme.features.inventor.plaba;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import acme.entities.chimpum.Chimpum;
+import acme.entities.plaba.Plaba;
 import acme.framework.controllers.AbstractController;
 import acme.roles.Inventor;
 
 @Controller
-public class InventorChimpumController extends AbstractController<Inventor, Chimpum>{
+public class InventorPlabaController extends AbstractController<Inventor, Plaba>{
 
 	// Internal state ---------------------------------------------------------
 	
 	@Autowired
-	protected InventorChimpumListService listService;
+	protected InventorPlabaListService listService;
 	
 	@Autowired
-	protected InventorChimpumShowService showService;
+	protected InventorPlabaShowService showService;
 	
 	@Autowired
-	protected InventorChimpumCreateService createService;
+	protected InventorPlabaCreateService createService;
 	
 	@Autowired
-	protected InventorChimpumUpdateService updateService;
+	protected InventorPlabaUpdateService updateService;
 
 	@Autowired
-	protected InventorChimpumDeleteService deleteService;
+	protected InventorPlabaDeleteService deleteService;
 	
 	// Constructors -----------------------------------------------------------
 	

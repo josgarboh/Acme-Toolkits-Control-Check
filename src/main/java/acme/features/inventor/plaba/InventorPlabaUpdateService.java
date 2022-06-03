@@ -1,4 +1,4 @@
-package acme.features.inventor.chimpum;
+package acme.features.inventor.plaba;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -6,7 +6,7 @@ import java.util.GregorianCalendar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.chimpum.Chimpum;
+import acme.entities.plaba.Plaba;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -15,61 +15,61 @@ import acme.roles.Inventor;
 import features.SpamDetector;
 
 @Service
-public class InventorChimpumUpdateService implements AbstractUpdateService<Inventor, Chimpum>{
+public class InventorPlabaUpdateService implements AbstractUpdateService<Inventor, Plaba>{
 	
 	//Individual
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected InventorChimpumRepository repository;
+	protected InventorPlabaRepository repository;
 
-	// AbstractListService<Inventor, Chimpum> interface ---------------------------
+	// AbstractListService<Inventor, Plaba> interface ---------------------------
 
 	@Override
-	public boolean authorise(final Request<Chimpum> request) {
+	public boolean authorise(final Request<Plaba> request) {
 		assert request != null;
 
 		return true;
 	}
 
 	@Override
-	public void bind(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void bind(final Request<Plaba> request, final Plaba entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "title", "description", "creationMoment", "startDate",
-										"finishDate","budget", "link");
+		request.bind(entity, errors, "subject", "summary", "creationMoment", "startDate",
+										"finishDate","income", "moreInfo");
 
 	}
 
 	@Override
-	public void unbind(final Request<Chimpum> request, final Chimpum entity, final Model model) {
+	public void unbind(final Request<Plaba> request, final Plaba entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "title", "description", "creationMoment", "startDate",
-										"finishDate","budget", "link");
+		request.unbind(entity, model, "subject", "summary", "creationMoment", "startDate",
+										"finishDate","income", "moreInfo");
 		model.setAttribute("code", entity.getPattern());
 	}
 
 	@Override
-	public Chimpum findOne(final Request<Chimpum> request) {
+	public Plaba findOne(final Request<Plaba> request) {
 		assert request != null;
 	
-		int chimpumId;
-		chimpumId = request.getModel().getInteger("id");
+		int plabaId;
+		plabaId = request.getModel().getInteger("id");
 		
-		Chimpum result;	
-		result = this.repository.findChimpumById(chimpumId);
+		Plaba result;	
+		result = this.repository.findPlabaById(plabaId);
 
 		return result;
 	}
 
 	@Override
-	public void validate(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void validate(final Request<Plaba> request, final Plaba entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -90,32 +90,28 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 		strongSpamThreshold = this.repository.findStrongSpamTreshold();
 		weakSpamThreshold = this.repository.findWeakSpamTreshold();
 
-		if(!errors.hasErrors("title")) {
-			
-			//Comprobacion de que el titulo contiene palabras malsonantes (suaves o duras)
+		if(!errors.hasErrors("subject")) {
 			
 			final Boolean condition = !spamDetector.containsSpam(weakSpamTerms.split(","),
 														weakSpamThreshold,
-														entity.getTitle())
+														entity.getSubject())
 								&& !spamDetector.containsSpam(strongSpamTerms.split(","),
 														strongSpamThreshold,
-														entity.getTitle());
+														entity.getSubject());
 			
-			errors.state(request, condition, "title", "inventor.chimpum.form.error.spam-detector");
+			errors.state(request, condition, "subject", "inventor.plaba.form.error.spam-detector");
 		}
 
-		if(!errors.hasErrors("description")) {
-			
-			//Comprobacion de que la descripcion contiene palabras malsonantes (suaves o duras)
+		if(!errors.hasErrors("summary")) {
 			
 			final Boolean condition = !spamDetector.containsSpam(weakSpamTerms.split(","),
 														weakSpamThreshold,
-														entity.getDescription())
+														entity.getSummary())
 								&& !spamDetector.containsSpam(strongSpamTerms.split(","),
 														strongSpamThreshold,
-														entity.getDescription());
+														entity.getSummary());
 			
-			errors.state(request, condition, "description", "inventor.chimpum.form.error.spam-detector");
+			errors.state(request, condition, "summary", "inventor.plaba.form.error.spam-detector");
 		}
 		
 		if(!errors.hasErrors("startDate")) {
@@ -128,7 +124,7 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 			
 			final Boolean condition = entity.getStartDate().after(calendar.getTime());
 
-			errors.state(request, condition, "startDate", "inventor.chimpum.form.error.start-date");	
+			errors.state(request, condition, "startDate", "inventor.plaba.form.error.start-date");	
 		}
 		
 		if(!errors.hasErrors("finishDate")) {
@@ -146,12 +142,12 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 				errorState = entity.getFinishDate().after(calendar.getTime());	//startDate debe ser previo (1 semana minimo)
 			}
 
-			errors.state(request, errorState, "finishDate", "inventor.chimpum.form.error.finish-date");	
+			errors.state(request, errorState, "finishDate", "inventor.plaba.form.error.finish-date");	
 		}
 		
-		if(!errors.hasErrors("budget")) {
+		if(!errors.hasErrors("income")) {
 			
-			final String currency = entity.getBudget().getCurrency();
+			final String currency = entity.getIncome().getCurrency();
 			final String currencyAvaliable = this.repository.acceptedCurrencies();
 			
 			boolean acceptedCurrency = false;
@@ -162,10 +158,10 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 				if(acceptedCurrency) break;
 			}
 			
-			final Boolean valorPositivo = entity.getBudget().getAmount() > 0;
+			final Boolean valorPositivo = entity.getIncome().getAmount() > 0;
 			
-			errors.state(request, valorPositivo, "budget", "inventor.chimpum.form.error.negative-budget");
-			errors.state(request, acceptedCurrency, "budget", "inventor.chimpum.form.error.negative-currency");
+			errors.state(request, valorPositivo, "income", "inventor.Plaba.form.error.negative-income");
+			errors.state(request, acceptedCurrency, "income", "inventor.Plaba.form.error.negative-currency");
 		}
 		
 		
@@ -174,7 +170,7 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 	}
 
 	@Override
-	public void update(final Request<Chimpum> request, final Chimpum entity) {
+	public void update(final Request<Plaba> request, final Plaba entity) {
 		assert request != null;
 		assert entity != null;
 

@@ -57,7 +57,7 @@ public class InventorArtifactDeleteService implements AbstractDeleteService<Inve
 		
 		request.unbind(entity, model, "name", "code", "technology", "description",
 									"retailPrice", "artifactType", "published", "link",
-									"chimpum");
+									"plaba");
 		
 	}
 

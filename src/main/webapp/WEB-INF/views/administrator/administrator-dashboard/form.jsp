@@ -4,18 +4,18 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
-<!-- Individual: Showing chimpums data -->
+<!-- Individual: Showing plabas data -->
 
-<h1><acme:message code="administrator.administrator-dashboard.form.title.chimpum"/></h1>
+<h1><acme:message code="administrator.administrator-dashboard.form.title.plaba"/></h1>
 
 <table class="table table-sm">
-<caption><acme:message code="administrator.administrator-dashboard.form.title.chimpum"/></caption>
+<caption><acme:message code="administrator.administrator-dashboard.form.title.plaba"/></caption>
 	<tr>
 		<th scope="row">
-			<acme:message code="administrator.administrator-dashboard.form.title.ratio-chimpums-artifacts"/>
+			<acme:message code="administrator.administrator-dashboard.form.title.ratio-plabas-artifacts"/>
 		</th>
 		<td>
-			<jstl:set var="value" value="${ratioOfArtifactsWithChimpum}"/>
+			<jstl:set var="value" value="${ratioOfToolsWithPlaba}"/>
 			<acme:print value="${value}"/>
 		</td>
 	</tr>
@@ -30,7 +30,7 @@
 				<acme:print value="${currency}"/>
 			</th>
 			<td>
-				<jstl:set var="value" value="${averageBudgetOfChimpumsGroupedByCurrency.getOrDefault(currency,0.0)}"/>
+				<jstl:set var="value" value="${averageIncomeOfPlabasGroupedByCurrency.getOrDefault(currency,0.0)}"/>
 				<acme:print value="${value}"/>
 			</td>
 		</tr>
@@ -46,7 +46,7 @@
 				<acme:print value="${currency}"/>
 			</th>
 			<td>
-				<jstl:set var="value" value="${deviationBudgetOfChimpumsGroupedByCurrency.getOrDefault(currency,0.0)}"/>
+				<jstl:set var="value" value="${deviationIncomeOfPlabasGroupedByCurrency.getOrDefault(currency,0.0)}"/>
 				<acme:print value="${value}"/>
 			</td>
 		</tr>
@@ -62,7 +62,7 @@
 				<acme:print value="${currency}"/>
 			</th>
 			<td>
-				<jstl:set var="value" value="${minimumBudgetOfChimpumsGroupedByCurrency.getOrDefault(currency,0.0)}"/>
+				<jstl:set var="value" value="${minimumIncometOfPlabasGroupedByCurrency.getOrDefault(currency,0.0)}"/>
 				<acme:print value="${value}"/>
 			</td>
 		</tr>
@@ -78,7 +78,7 @@
 				<acme:print value="${currency}"/>
 			</th>
 			<td>
-				<jstl:set var="value" value="${maximumBudgetOfChimpumsGroupedByCurrency.getOrDefault(currency,0.0)}"/>
+				<jstl:set var="value" value="${maximumIncomeOfPlabasGroupedByCurrency.getOrDefault(currency,0.0)}"/>
 				<acme:print value="${value}"/>
 			</td>
 		</tr>

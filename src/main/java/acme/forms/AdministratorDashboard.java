@@ -55,12 +55,12 @@ public class AdministratorDashboard {
 	
 	//Individual
 	
-	double										ratioOfArtifactsWithChimpum;
+	double									ratioOfToolsWithPlaba;
 	
-	Map<String,Double>						averageBudgetOfChimpumsGroupedByCurrency;
-	Map<String,Double>						deviationBudgetOfChimpumsGroupedByCurrency;
-	Map<String,Double>						minimumBudgetOfChimpumsGroupedByCurrency;
-	Map<String,Double>						maximumBudgetOfChimpumsGroupedByCurrency;						
+	Map<String,Double>						averageIncomeOfPlabasGroupedByCurrency;
+	Map<String,Double>						deviationIncomeOfPlabasGroupedByCurrency;
+	Map<String,Double>						minimumIncomeOfPlabasGroupedByCurrency;
+	Map<String,Double>						maximumIncomeOfPlabasGroupedByCurrency;						
 	
 	// Derived attributes -----------------------------------------------------
 

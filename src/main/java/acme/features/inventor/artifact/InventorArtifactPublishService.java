@@ -57,7 +57,7 @@ public class InventorArtifactPublishService implements AbstractUpdateService<Inv
 			
 			request.unbind(entity, model, "name", "code", "technology", "description",
 										"retailPrice", "artifactType", "published", "link",
-										"chimpum");
+										"plaba");
 
 		}
 

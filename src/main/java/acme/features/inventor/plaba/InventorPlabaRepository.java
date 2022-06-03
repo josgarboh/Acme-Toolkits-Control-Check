@@ -1,4 +1,4 @@
-package acme.features.inventor.chimpum;
+package acme.features.inventor.plaba;
 
 import java.util.Collection;
 import java.util.List;
@@ -7,23 +7,23 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.artifacts.Artifact;
-import acme.entities.chimpum.Chimpum;
+import acme.entities.plaba.Plaba;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
-public interface InventorChimpumRepository extends AbstractRepository{
+public interface InventorPlabaRepository extends AbstractRepository{
 
-	@Query("select c from Chimpum c")
-	Collection<Chimpum> findAllChimpums();
+	@Query("select p from Plaba p")
+	Collection<Plaba> findAllPlabas();
 
-	@Query("select c from Chimpum c where c.id = :id")
-	Chimpum findChimpumById(int id);
+	@Query("select p from Plaba p where p.id = :id")
+	Plaba findPlabaById(int id);
 	
-	@Query("select a from Artifact a where a.chimpum.id = :id")
-	Collection<Artifact> findArtifactsByChimpumId(int id);
+	@Query("select a from Artifact a where a.plaba.id = :id")
+	Collection<Artifact> findArtifactsByPlabaId(int id);
 	
-	@Query("select c from Chimpum c where c.code = :code")
-	List<Chimpum> findChimpumsWithSameCode(String code);
+	@Query("select p from Plaba p where p.code = :code")
+	List<Plaba> findPlabasWithSameCode(String code);
 	
 	//Para validate
 	

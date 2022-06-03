@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.artifacts.Artifact;
 import acme.entities.artifacts.ArtifactType;
-import acme.entities.chimpum.Chimpum;
+import acme.entities.plaba.Plaba;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -50,13 +50,13 @@ public class InventorArtifactUpdateService implements AbstractUpdateService<Inve
 		assert errors != null;
 		
 		if(entity.getArtifactType().equals(ArtifactType.TOOL)) {		
-			int chimpumId;
-			chimpumId = request.getModel().getInteger("chimpum");
+			int plabaId;
+			plabaId = request.getModel().getInteger("plaba");
 			
-			Chimpum chimpum;
-			chimpum = chimpumId == -1 ? null : this.repository.findChimpumById(chimpumId);
+			Plaba plaba;
+			plaba = plabaId == -1 ? null : this.repository.findPlabaById(plabaId);
 
-			entity.setChimpum(chimpum);
+			entity.setPlaba(plaba);
 		}
 
 		request.bind(entity, errors, "name", "code", "technology", "description", "retailPrice", "artifactType", "link");
@@ -69,13 +69,13 @@ public class InventorArtifactUpdateService implements AbstractUpdateService<Inve
 		assert entity != null;
 		assert model != null;
 		
-		List<Chimpum> allChimpums;
-		allChimpums = this.repository.findAllChimpums();
+		List<Plaba> allPlabas;
+		allPlabas = this.repository.findAllPlabas();
 
 		request.unbind(entity, model, "name", "technology", "description", "retailPrice",
-									"artifactType", "published", "link", "chimpum");
+									"artifactType", "published", "link", "plaba");
 		
-		model.setAttribute("chimpums", allChimpums);
+		model.setAttribute("plabas", allPlabas);
 	}
 
 	@Override

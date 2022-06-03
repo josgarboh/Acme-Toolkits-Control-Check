@@ -1,0 +1,26 @@
+inventor.plaba.list.label.code = Code
+inventor.plaba.list.label.creation-moment = Creation moment
+inventor.plaba.list.label.subject = Subject
+
+inventor.plaba.list.button.create = Create a plaba
+
+inventor.plaba.form.label.code = Code
+inventor.plaba.form.label.creation-moment = Creation moment
+inventor.plaba.form.label.subject = Subject
+inventor.plaba.form.label.summary = Summary
+inventor.plaba.form.label.start-date = Start date
+inventor.plaba.form.label.finish-date = Finish date
+inventor.plaba.form.label.income = Income
+inventor.plaba.form.label.more-info = Link with info
+
+inventor.plaba.form.button.artifact =  Associated artifacts
+inventor.plaba.form.button.create = Create
+inventor.plaba.form.button.update = Update
+inventor.plaba.form.button.delete = Delete
+
+inventor.plaba.form.error.duplicated-code = Duplicated code
+inventor.plaba.form.error.spam-detector = Text cannot have spam. Rewrite it properly, please.
+inventor.plaba.form.error.negative-income = The amount must be positive
+inventor.plaba.form.error.negative-currency = The currency is incorrect
+inventor.plaba.form.error.start-date = The start date must be one month (or longer) after the plaba is created
+inventor.plaba.form.error.finish-date = The finish date must be one week (or longer) after the start date value

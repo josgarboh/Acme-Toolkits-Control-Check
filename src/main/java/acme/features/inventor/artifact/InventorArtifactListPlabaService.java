@@ -12,7 +12,7 @@ import acme.framework.services.AbstractListService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorArtifactListChimpumService implements AbstractListService<Inventor, Artifact>{
+public class InventorArtifactListPlabaService implements AbstractListService<Inventor, Artifact>{
 	
 	//Individual
 	
@@ -34,11 +34,11 @@ public class InventorArtifactListChimpumService implements AbstractListService<I
 	public Collection<Artifact> findMany(final Request<Artifact> request) {
 		assert request != null;
 		
-		int chimpumId;
-		chimpumId = request.getModel().getInteger("chimpumId");	//"id" sería de artifact, no de chimpum
+		int plabaId;
+		plabaId = request.getModel().getInteger("plaba");
 		
 		Collection<Artifact> result;
-		result = this.repository.findPublishedArtifactsByChimpumId(chimpumId);
+		result = this.repository.findPublishedArtifactsByPlabaId(plabaId);
 		
 		return result;
 		

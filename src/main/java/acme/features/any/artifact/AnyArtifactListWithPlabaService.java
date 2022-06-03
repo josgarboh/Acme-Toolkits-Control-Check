@@ -12,7 +12,7 @@ import acme.framework.roles.Any;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AnyArtifactListWithChimpumService implements AbstractListService<Any, Artifact> {
+public class AnyArtifactListWithPlabaService implements AbstractListService<Any, Artifact> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -32,11 +32,11 @@ public class AnyArtifactListWithChimpumService implements AbstractListService<An
 	public Collection<Artifact> findMany(final Request<Artifact> request) {
 		assert request != null;
 
-		int chimpumId;
-		chimpumId = request.getModel().getInteger("chimpumId");
+		int plabaId;
+		plabaId = request.getModel().getInteger("plabaId");
 		
 		Collection<Artifact> result;
-		result = this.repository.findArtifactsByChimpumId(chimpumId);
+		result = this.repository.findArtifactsByPlabaId(plabaId);
 
 		return result;
 	}
