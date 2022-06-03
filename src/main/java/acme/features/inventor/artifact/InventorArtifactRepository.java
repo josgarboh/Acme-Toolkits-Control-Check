@@ -1,12 +1,14 @@
 package acme.features.inventor.artifact;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.artifacts.Artifact;
 import acme.entities.artifacts.Quantity;
+import acme.entities.chimpum.Chimpum;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Inventor;
 
@@ -58,4 +60,10 @@ public interface InventorArtifactRepository extends AbstractRepository{
 	
 	@Query("select a from Artifact a where a.chimpum.id = :id and a.published = true")
 	Collection<Artifact> findPublishedArtifactsByChimpumId(int id);
+	
+	@Query("select c from Chimpum c")
+	List<Chimpum> findAllChimpums();
+
+	@Query("select c from Chimpum c where c.id = :id")
+	Chimpum findChimpumById(int id);
 }

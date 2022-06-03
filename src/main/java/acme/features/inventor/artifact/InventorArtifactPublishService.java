@@ -55,7 +55,9 @@ public class InventorArtifactPublishService implements AbstractUpdateService<Inv
 			assert entity != null;
 			assert model != null;
 			
-			request.unbind(entity, model,"name", "code", "technology" , "description" , "retailPrice", "artifactType", "published", "link");
+			request.unbind(entity, model, "name", "code", "technology", "description",
+										"retailPrice", "artifactType", "published", "link",
+										"chimpum");
 
 		}
 

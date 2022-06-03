@@ -15,7 +15,7 @@ public class InventorChimpumUpdateTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/chimpum/update.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positive(final int recordIndex, final String code, final String title, final String description, final String startDate, final String finishDate,final String budget, final String link) {
+	public void positive(final int recordIndex, final String title, final String description, final String startDate, final String finishDate,final String budget, final String link) {
 
 		super.signIn("inventor2", "inventor2");
 
@@ -25,7 +25,7 @@ public class InventorChimpumUpdateTest extends TestHarness {
 		super.clickOnListingRecord(0);
 		super.checkFormExists();
 
-		super.fillInputBoxIn("code", code);
+//		super.fillInputBoxIn("code", code);
 		super.fillInputBoxIn("title", title);
 		super.fillInputBoxIn("description", description);
 		super.fillInputBoxIn("startDate", startDate);
@@ -42,7 +42,7 @@ public class InventorChimpumUpdateTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/chimpum/update-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)
-	public void negative(final int recordIndex, final String code, final String title, final String description, final String startDate, final String finishDate,final String budget, final String link) {
+	public void negative(final int recordIndex, final String title, final String description, final String startDate, final String finishDate,final String budget, final String link) {
 
 		super.signIn("inventor2", "inventor2");
 
@@ -52,7 +52,7 @@ public class InventorChimpumUpdateTest extends TestHarness {
 		super.clickOnListingRecord(0);
 		super.checkFormExists();
 
-		super.fillInputBoxIn("code", code);
+//		super.fillInputBoxIn("code", code); Una vez creado no se modifica
 		super.fillInputBoxIn("title", title);
 		super.fillInputBoxIn("description", description);
 		super.fillInputBoxIn("startDate", startDate);

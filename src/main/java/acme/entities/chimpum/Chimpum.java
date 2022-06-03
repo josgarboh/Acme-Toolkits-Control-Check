@@ -1,5 +1,6 @@
 package acme.entities.chimpum;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -31,7 +33,8 @@ public class Chimpum extends AbstractEntity {
 	//Attributes -----------------------------------
 	
 	@Column(unique = true)
-	//Falta @Pattern
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
+	@NotNull
 	protected String 			code;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -65,5 +68,13 @@ public class Chimpum extends AbstractEntity {
 	
 	@URL
 	protected String 			link;	//opcional
+	
+	//pattern -> Derivado de creationMoment y code
+	
+	public String getPattern() {
+		String pattern;
+		pattern = new SimpleDateFormat("dd/MM/yy").format(this.creationMoment);
+		return pattern + "-" + this.code;
+	}
 
 }

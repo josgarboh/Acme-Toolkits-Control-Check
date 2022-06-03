@@ -18,6 +18,7 @@ inventor.chimpum.form.button.create = Create
 inventor.chimpum.form.button.update = Update
 inventor.chimpum.form.button.delete = Delete
 
+inventor.chimpum.form.error.duplicated-code = Duplicated code
 inventor.chimpum.form.error.spam-detector = Text cannot have spam. Rewrite it properly, please.
 inventor.chimpum.form.error.negative-budget = The amount must be positive
 inventor.chimpum.form.error.negative-currency = The currency is incorrect

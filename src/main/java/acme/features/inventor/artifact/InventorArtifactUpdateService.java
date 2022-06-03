@@ -1,9 +1,13 @@
 package acme.features.inventor.artifact;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.artifacts.Artifact;
+import acme.entities.artifacts.ArtifactType;
+import acme.entities.chimpum.Chimpum;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -44,8 +48,18 @@ public class InventorArtifactUpdateService implements AbstractUpdateService<Inve
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
+		if(entity.getArtifactType().equals(ArtifactType.TOOL)) {		
+			int chimpumId;
+			chimpumId = request.getModel().getInteger("chimpum");
+			
+			Chimpum chimpum;
+			chimpum = chimpumId == -1 ? null : this.repository.findChimpumById(chimpumId);
 
-		request.bind(entity, errors, "name", "code", "technology" , "description" , "retailPrice", "artifactType", "link");
+			entity.setChimpum(chimpum);
+		}
+
+		request.bind(entity, errors, "name", "code", "technology", "description", "retailPrice", "artifactType", "link");
 		
 	}
 
@@ -55,9 +69,13 @@ public class InventorArtifactUpdateService implements AbstractUpdateService<Inve
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model,"name", "code", "technology" , "description" , "retailPrice", "artifactType", "published", "link");
+		List<Chimpum> allChimpums;
+		allChimpums = this.repository.findAllChimpums();
 
+		request.unbind(entity, model, "name", "technology", "description", "retailPrice",
+									"artifactType", "published", "link", "chimpum");
 		
+		model.setAttribute("chimpums", allChimpums);
 	}
 
 	@Override

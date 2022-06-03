@@ -12,10 +12,11 @@ inventor.artifact.form.label.description = Descripción
 inventor.artifact.form.label.retailprice = Precio
 inventor.artifact.form.label.link = Enlace
 
+inventor.artifact.form.option.none = Ninguno
 
 inventor.artifact.list.label.inventor = Inventor
 inventor.artifact.list.label.quantity = Cantidad
-
+inventor.artifact.list.label.chimpum = Chimpum
 
 
 inventor.artifact.form.button.update = Actualizar

@@ -55,7 +55,7 @@ public class AdministratorDashboard {
 	
 	//Individual
 	
-	int										ratioOfArtifactsWithChimpum;
+	double										ratioOfArtifactsWithChimpum;
 	
 	Map<String,Double>						averageBudgetOfChimpumsGroupedByCurrency;
 	Map<String,Double>						deviationBudgetOfChimpumsGroupedByCurrency;

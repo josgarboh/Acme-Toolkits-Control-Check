@@ -1,0 +1,2 @@
+timestamp,test-class,test-method,time,description,result
+"2022-06-03 05:12:11.438","acme.testing.inventor.chimpum.InventorChimpumUpdateTest","negative",15200,""[9] recordIndex=9, title=El Chimpum 11 budget vacio, description=Este es el Chimpum 11 testeo, startDate=2025/04/02 12:00, finishDate=2021/04/15 12:00, budget=null, link=null"","OK"

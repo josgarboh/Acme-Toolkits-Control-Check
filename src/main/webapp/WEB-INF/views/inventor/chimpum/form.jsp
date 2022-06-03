@@ -3,11 +3,11 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
-<acme:form readonly="${readOnly}">
-	<acme:input-textbox code="inventor.chimpum.form.label.code" path="code"/>
+<acme:form>
+	<acme:input-textbox readonly="${acme:anyOf(command, 'show, update, delete')}" code="inventor.chimpum.form.label.code" placeholder="ABC-123-A" path="code"/>
 	<acme:input-moment readonly="true" code="inventor.chimpum.form.label.creation-moment" path="creationMoment"/>
 	<acme:input-textbox code="inventor.chimpum.form.label.title" path="title"/>
-	<acme:input-textbox code="inventor.chimpum.form.label.description" path="description"/>
+	<acme:input-textarea code="inventor.chimpum.form.label.description" path="description"/>
 	<acme:input-moment code="inventor.chimpum.form.label.start-date" path="startDate"/>
 	<acme:input-moment code="inventor.chimpum.form.label.finish-date" path="finishDate"/>
 	<acme:input-money code="inventor.chimpum.form.label.budget" path="budget"/>
@@ -20,7 +20,7 @@
 		</jstl:when>
 		
 		<jstl:when test="${acme:anyOf(command, 'show, update, delete')}">
-			<acme:button code="inventor.chimpum.form.button.artifact" action="/inventor/artifact/list-chimpum?chimpumId=${chimpumId}"/>
+			<acme:button code="inventor.chimpum.form.button.artifact" action="/any/artifact/list-with-chimpum?chimpumId=${chimpumId}"/>
 			<acme:submit code="inventor.chimpum.form.button.update" action="/inventor/chimpum/update"/>
 			<acme:submit code="inventor.chimpum.form.button.delete" action="/inventor/chimpum/delete"/>
 		</jstl:when>

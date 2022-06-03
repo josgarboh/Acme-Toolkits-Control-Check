@@ -3,6 +3,7 @@ package acme.features.inventor.chimpum;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,7 +52,7 @@ public class InventorChimpumCreateService  implements AbstractCreateService<Inve
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "title", "description", "creationMoment", "startDate",
+		request.unbind(entity, model,"code", "title", "description", "creationMoment", "startDate",
 										"finishDate","budget", "link");
 
 
@@ -91,6 +92,23 @@ public class InventorChimpumCreateService  implements AbstractCreateService<Inve
 		strongSpamThreshold = this.repository.findStrongSpamTreshold();
 		weakSpamThreshold = this.repository.findWeakSpamTreshold();
 
+		
+		//En caso de que el code y el creationMoment estén duplicados:
+		if (!errors.hasErrors("code")) {
+			List<Chimpum> chimpumsWithSameCode;
+			int numberOfChimpumWithCode;
+
+			chimpumsWithSameCode = this.repository.findChimpumsWithSameCode(entity.getCode());
+
+			numberOfChimpumWithCode = 0;
+			for(final Chimpum chimpum: chimpumsWithSameCode) {	//Solo comparamos fecha (hora no): no usamos sql
+				if(chimpum.getPattern().equals(entity.getPattern()))
+					numberOfChimpumWithCode+= 1;
+			}
+
+			errors.state(request, numberOfChimpumWithCode == 0, "code", "inventor.chimpum.form.error.duplicated-code");
+		}
+		
 		if(!errors.hasErrors("title")) {
 			
 			//Comprobacion de que el titulo contiene palabras malsonantes (suaves o duras)

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.artifacts.Artifact;
 import acme.entities.artifacts.ArtifactType;
+import acme.entities.chimpum.Chimpum;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractShowService;
@@ -58,14 +59,25 @@ public class InventorArtifactShowService implements AbstractShowService<Inventor
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "artifactType", "link");
+		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "artifactType", "link", "chimpum");
+
 		List<String> types;
+		List<Chimpum> chimpums;
+
 		types = new ArrayList<String>();
-		for(final ArtifactType type:ArtifactType.values()) {
+		
+		for(final ArtifactType type : ArtifactType.values()) {
 			types.add(type.toString());
 		}
+
+		chimpums = this.repository.findAllChimpums();
+
 		model.setAttribute("types", types);
 		model.setAttribute("published", entity.isPublished());
+		model.setAttribute("chimpums", chimpums);
+		
+		model.setAttribute("chimpum.code", entity.getCode());
 	}
+
 	
 }

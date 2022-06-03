@@ -39,7 +39,7 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "code", "title", "description", "creationMoment", "startDate",
+		request.bind(entity, errors, "title", "description", "creationMoment", "startDate",
 										"finishDate","budget", "link");
 
 	}
@@ -50,10 +50,9 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "title", "description", "creationMoment", "startDate",
+		request.unbind(entity, model, "title", "description", "creationMoment", "startDate",
 										"finishDate","budget", "link");
-
-
+		model.setAttribute("code", entity.getPattern());
 	}
 
 	@Override
